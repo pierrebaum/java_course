@@ -5,28 +5,38 @@ Write a class that creates instances of the Recangle class to find the
 total area of the two rooms
  */
 
-public class HomeAreaCalculator {
+import java.util.Scanner;
+
+public class HomeAreaCalculatorRedo {
+
+    private Scanner scanner = new Scanner(System.in);
 
     public static void main(String args[]){
 
-        /********************
-         * RECTANGLE 1
-         ********************/
+        HomeAreaCalculatorRedo calculator = new HomeAreaCalculatorRedo();
+        Rectangle kitchen = calculator.getRoom();
+        Rectangle bathrom = calculator.getRoom();
 
-        //Create instance of Rectangle class
-        Rectangle room1 = new Rectangle();
-        room1.setWidth(25);
-        room1.setLength(50);
-        double areaOfRoom1 = room1.calculateArea();
+        double area = calculator.caculateTotalArea(kitchen, bathrom);
 
-        /********************
-         * RECTANGLE 2
-         ********************/
-        Rectangle room2 = new Rectangle(30,75);
-        double areaOfRoom2 = room2.calculateArea();
+        calculator.scanner.close();
 
-        double totalArea = areaOfRoom1 + areaOfRoom2;
+        System.out.println("The total area is: " + area);
 
-        System.out.println("Area of both rooms: " + totalArea);
+    }
+    public Rectangle getRoom(){
+
+        System.out.println("Enter the length of the room:");
+        double length = scanner.nextDouble();
+
+        System.out.println("Enter the width of the room:");
+        double width = scanner.nextDouble();
+
+        return new Rectangle(length, width);
+
+    }
+    public double caculateTotalArea(Rectangle rectangle1, Rectangle rectangle2){
+
+        return rectangle1.calculateArea() + rectangle2.calculateArea();
     }
 }
